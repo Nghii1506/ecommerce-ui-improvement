@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cải tiến Giao diện Sản phẩm & Giỏ hàng TMĐT</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo-box">
+                <h1>Cửa hàng TMĐT Cải tiến</h1>
+                <p class="subtitle">Hiển thị giá gốc, ưu đãi và tổng thanh toán minh bạch</p>
+            </div>
+            <!-- Bổ sung menu điều hướng ngữ nghĩa nav -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-link active">Trang chủ</a>
+                <a href="#" class="nav-link">Sản phẩm</a>
+                <a href="#" class="nav-link">Giỏ hàng</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        <!-- Khu vực Danh sách sản phẩm -->
+        <section class="product-section">
+            <h2>Gợi ý sản phẩm dành cho bạn</h2>
+            <div class="product-grid">
+                
+                <!-- Card 1 -->
+                <article class="product-card">
+    <div class="badge-discount">-25%</div>
+    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600&auto=format&fit=crop" alt="Áo Khoác Denim Vintage" class="product-img">
+    <div class="product-info">
+        <span class="category">Thời trang</span>
+        <h3 class="product-title">Áo Khoác Denim Vintage Form Wide Unisex Style Hàn Quốc</h3>
+        <div class="price-box">
+            <span class="current-price">299.000đ</span>
+            <span class="old-price">399.000đ</span>
+        </div>
+        <div class="shipping-tag">FreeShip Xtra Pro</div>
+        <button class="btn-add-cart" type="button">Thêm vào giỏ</button>
+    </div>
+</article>
+
+                <!-- Card 2 -->
+                <article class="product-card">
+                    <div class="badge-discount">-15%</div>
+                    <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop" alt="Tai nghe Bluetooth TWS" class="product-img">
+                    <div class="product-info">
+                        <span class="category">Điện tử</span>
+                        <h3 class="product-title">Tai Nghe Bluetooth TWS Chống Ồn Chủ Động Pin 24H</h3>
+                        <div class="price-box">
+                            <span class="current-price">425.000đ</span>
+                            <span class="old-price">500.000đ</span>
+                        </div>
+                        <div class="shipping-tag">FreeShip Xtra Pro</div>
+                        <button class="btn-add-cart">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="product-card">
+    <div class="badge-discount">-30%</div>
+    <img src="https://images.unsplash.com/photo-1625093742435-6fa192b6fb10?w=600&auto=format&fit=crop" alt="Son Kem Lì Velvet Tint" class="product-img">
+    <div class="product-info">
+        <span class="category">Mỹ phẩm</span>
+        <h3 class="product-title">Son Kem Lì Velvet Tint Mịn Mượt Như Nhung Bền Màu 12H</h3>
+        <div class="price-box">
+            <span class="current-price">189.000đ</span>
+            <span class="old-price">270.000đ</span>
+        </div>
+        <div class="shipping-tag">Giao nhanh 2H</div>
+        <button class="btn-add-cart" type="button">Thêm vào giỏ</button>
+    </div>
+</article>
+
+                <!-- Card 4 -->
+                <article class="product-card">
+                    <div class="badge-discount">-10%</div>
+                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&auto=format&fit=crop" alt="Bình Giữ Nhiệt Inox 304" class="product-img">
+                    <div class="product-info">
+                        <span class="category">Bách hóa</span>
+                        <h3 class="product-title">Bình Giữ Nhiệt Inox 304 Dung Tích 800ml Giữ Nóng/Lạnh 12H</h3>
+                        <div class="price-box">
+                            <span class="current-price">180.000đ</span>
+                            <span class="old-price">200.000đ</span>
+                        </div>
+                        <div class="shipping-tag">FreeShip Xtra Pro</div>
+                        <button class="btn-add-cart">Thêm vào giỏ</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Khu vực Bảng tính giá minh bạch cải tiến -->
+        <aside class="cart-summary-section">
+            <h2>Tóm Tắt Chi Phí Minh Bạch</h2>
+            <div class="summary-card">
+                <div class="summary-row">
+                    <span>Tổng tiền hàng:</span>
+                    <span>895.000đ</span>
+                </div>
+                <div class="summary-row text-green">
+                    <span>Giảm giá Shop Voucher:</span>
+                    <span>-50.000đ</span>
+                </div>
+                <div class="summary-row text-green">
+                    <span>Mã Miễn phí vận chuyển:</span>
+                    <span>-30.000đ</span>
+                </div>
+                <div class="summary-row">
+                    <span>Phí vận chuyển dự kiến:</span>
+                    <span>30.000đ</span>
+                </div>
+                <hr>
+                <div class="summary-row total-row">
+                    <span>Tổng thanh toán thực tế:</span>
+                    <span class="final-price">845.000đ</span>
+                </div>
+                <p class="note">* Đã áp dụng mã giảm giá tốt nhất cho đơn hàng của bạn.</p>
+                <button class="btn-checkout">Tiến hành thanh toán</button>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Bài tập Phát triển ứng dụng Web/TMĐT - UEH</p>
+    </footer>
+
+</body>
+</html>
