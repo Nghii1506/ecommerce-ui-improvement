@@ -1,4 +1,4 @@
-# 🤖 Báo Cáo Sử Dụng AI Có Kiểm Soát (AI Usage Report)
+# Báo Cáo Sử Dụng AI Có Kiểm Soát (AI Usage Report)
 
 > **Dự án:** RECHIC — Lookbook Studio Minimalist Chic  
 > **Môn học:** Phát triển ứng dụng Web / Thương mại Điện tử (UEH)  
@@ -6,7 +6,7 @@
 
 ---
 
-## 📌 1. Nhật Ký Prompt Tiêu Biểu & Kết Quả
+##  1. Nhật Ký Prompt Tiêu Biểu & Kết Quả
 
 | STT | Bước thực hiện | Prompt dán cho AI | Kết quả AI phản hồi | Điều chỉnh thực tế của Sinh viên |
 | :---: | :--- | :--- | :--- | :--- |
@@ -17,7 +17,7 @@
 
 ---
 
-## 🔍 2. Đánh Giá Năng Lực Kiểm Soát Mã Nguồn Của Sinh Viên
+##  2. Đánh Giá Năng Lực Kiểm Soát Mã Nguồn Của Sinh Viên
 
 Trong suốt quá trình làm bài, sinh viên đảm bảo vai trò chủ đạo trong việc kiểm soát mã nguồn:
 
