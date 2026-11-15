@@ -544,11 +544,15 @@
             </nav>
 
             <div class="header-actions">
-                <button class="btn-cart-trigger" id="openCart">
-                    <span>Giỏ hàng</span>
-                    <span class="cart-badge" id="cartCount">0</span>
-                </button>
-            </div>
+    <a href="cart.html" class="btn-cart-trigger" aria-label="Giỏ hàng" style="text-decoration: none; color: inherit;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge" id="cartCount">0</span>
+    </a>
+</div>
         </div>
     </header>
 
