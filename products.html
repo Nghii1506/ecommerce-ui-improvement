@@ -196,18 +196,114 @@
 
     <script>
         const PRODUCTS = [
-            { id: 1, name: "Đầm Cổ Origami Resie Dáng A Chiết Eo", cat: "dam", catName: "Đầm Thiết Kế", price: 645000, oldPrice: 860000, badge: "-25%", badgeType: "sale", colors: ["#1C1C1C", "#F5EFE6"], img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=700&q=80", desc: "Thiết kế cổ gấp Origami độc quyền tạo điểm nhấn thanh lịch, chất liệu tuyết mưa Hàn Quốc đứng phom." },
-            { id: 2, name: "Set Gile Cổ Yếm Halter & Shorts Xếp Ly", cat: "set", catName: "Set Trang Phục", price: 545000, oldPrice: 640000, badge: "Best Seller", badgeType: "hot", colors: ["#E8D8C8", "#FFFFFF"], img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=700&q=80", desc: "Set đồ thanh lịch mang hơi hướng Quiet Luxury, dễ dàng tách lẻ phối cùng quần suông công sở." },
+            { id: 1, name: "Đầm Cổ Origami Resie Dáng A Chiết Eo", cat: "dam", catName: "Đầm Thiết Kế", price: 645000, oldPrice: 860000, badge: "-25%", badgeType: "sale", colors: ["#1C1C1C", "#F5EFE6"], img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80", desc: "Thiết kế cổ gấp Origami độc quyền tạo điểm nhấn thanh lịch, chất liệu tuyết mưa Hàn Quốc đứng phom." },
+            { id: 2, name: "Set Gile Cổ Yếm Halter & Shorts Xếp Ly", cat: "set", catName: "Set Trang Phục", price: 545000, oldPrice: 640000, badge: "Best Seller", badgeType: "hot", colors: ["#E8D8C8", "#FFFFFF"], img: "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg?auto=compress&cs=tinysrgb&w=700", desc: "Set đồ thanh lịch mang hơi hướng Quiet Luxury, dễ dàng tách lẻ phối cùng quần suông công sở." },
             { id: 3, name: "Áo Lụa Satin Viền Ren Vạt Xéo Cột Nơ", cat: "ao", catName: "Áo Kiểu", price: 395000, oldPrice: 495000, badge: "-20%", badgeType: "sale", colors: ["#F7F3EE", "#B8192C"], img: "https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b?auto=format&fit=crop&w=700&q=80", desc: "Lụa satin mềm mại bắt sáng nhẹ, chi tiết viền ren Pháp tinh xảo phù hợp tiệc tối nhẹ nhàng." },
             { id: 4, name: "Set Gile Peplum 2 Tầng Nút Ngọc Trai", cat: "set", catName: "Set Trang Phục", price: 585000, oldPrice: 650000, badge: "New", badgeType: "new", colors: ["#FFFFFF", "#121212"], img: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=700&q=80", desc: "Phom peplum 2 tầng giúp che khuyết điểm vòng eo hiệu quả, tôn lên nét nữ tính hiện đại." },
-            { id: 5, name: "Đầm Midi Trễ Vai Lụa Organza Phối Nơ", cat: "dam", catName: "Đầm Thiết Kế", price: 720000, oldPrice: 890000, badge: "New", badgeType: "new", colors: ["#B8192C", "#121212"], img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80", desc: "Đầm dự tiệc dáng midi thướt tha với phần vai trễ gợi cảm vừa đủ, lót lụa habotai thấm hút tốt." },
-            { id: 6, name: "Áo Sơ Mi Croptop Tay Bồng Cổ Sen", cat: "ao", catName: "Áo Kiểu", price: 365000, oldPrice: 430000, badge: "-15%", badgeType: "sale", colors: ["#FFFFFF", "#DCE4EC"], img: "https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=80", desc: "Chất liệu cotton thô đũi thoáng mát, phom croptop trẻ trung hack chiều cao tối đa." },
-            { id: 7, name: "Chân Váy Midi Xếp Ly Lệch Tà Minimal", cat: "vay", catName: "Chân Váy & Quần", price: 420000, oldPrice: 0, badge: "Hot", badgeType: "hot", colors: ["#1C1C1C", "#C5B9AC"], img: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?auto=format&fit=crop&w=700&q=80", desc: "Đường xếp ly sắc nét giữ phom sau nhiều lần giặt, cạp cao tôn vòng eo thon gọn." },
-            { id: 8, name: "Set Blazer Ngắn Tay & Chân Váy Chữ A", cat: "set", catName: "Set Trang Phục", price: 690000, oldPrice: 820000, badge: "-16%", badgeType: "sale", colors: ["#D8CFC4", "#2B2B2B"], img: "https://images.unsplash.com/photo-1591369822096-ffd140ec948f?auto=format&fit=crop&w=700&q=80", desc: "Gợi ý hoàn hảo cho quý cô công sở yêu thích phong cách Hàn Quốc thanh lịch, năng động." },
-            { id: 9, name: "Đầm Hai Dây Lụa Satin Cắt Xéo Bias Cut", cat: "dam", catName: "Đầm Thiết Kế", price: 590000, oldPrice: 0, badge: "New", badgeType: "new", colors: ["#2C3E50", "#EADBC8"], img: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80", desc: "Kỹ thuật cắt xéo canh vải giúp tà váy rủ tự nhiên theo từng bước chuyển động." },
-            { id: 10, name: "Quần Suông Ống Rộng Ly Đôi Cạp Cao", cat: "vay", catName: "Chân Váy & Quần", price: 450000, oldPrice: 520000, badge: "Best Seller", badgeType: "hot", colors: ["#121212", "#F2EFE9"], img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=80", desc: "Item quốc dân không thể thiếu trong tủ đồ, kéo dài đôi chân và che khuyết điểm cực tốt." },
-            { id: 11, name: "Áo Kiểu Corset Ren Hoa Nổi Tay Phồng", cat: "ao", catName: "Áo Kiểu", price: 440000, oldPrice: 550000, badge: "-20%", badgeType: "sale", colors: ["#FFFFFF", "#F4D9D9"], img: "https://images.unsplash.com/photo-1564257631407-4deb1f99d992?auto=format&fit=crop&w=700&q=80", desc: "Gọng định hình nhẹ nhàng ôm sát cơ thể mà vẫn thoải mái khi vận động cả ngày." },
-            { id: 12, name: "Đầm Tweed Dáng Ngắn Viền Bện Kim Tuyến", cat: "dam", catName: "Đầm Thiết Kế", price: 780000, oldPrice: 950000, badge: "Limited", badgeType: "new", colors: ["#F9F6F0", "#B8192C"], img: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=700&q=80", desc: "Vải tweed dệt sợi ánh kim sang trọng, viền bện thủ công tỉ mỉ chuẩn phong cách tiểu thư." }
+           { 
+                id: 5, 
+                name: "Đầm Midi Lệch Vai Xếp Ly Drape Lụa Satin", 
+                cat: "dam", 
+                catName: "Đầm Thiết Kế", 
+                price: 745000, 
+                oldPrice: 920000, 
+                badge: "New '26", 
+                badgeType: "new", 
+                colors: ["#B8192C", "#121212"], 
+                img: "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=700&q=80", 
+                desc: "Kỹ thuật xếp nếp drape thủ công vùng eo kết hợp phom lệch vai bất đối xứng chuẩn tiệc tối Quiet Luxury." 
+            },
+            { 
+                id: 6, 
+                name: "Áo Trễ Vai Dáng Peplum Xòe Nhẹ Chất Taffeta", 
+                cat: "ao", 
+                catName: "Áo Kiểu", 
+                price: 425000, 
+                oldPrice: 495000, 
+                badge: "Trending", 
+                badgeType: "hot", 
+                colors: ["#FFFFFF", "#F3E9DC"], 
+                img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=700&q=80", 
+                desc: "Phom peplum chiết eo cao hack tỷ lệ cơ thể cực đỉnh, chất taffeta đứng phom tự nhiên đang làm mưa làm gió." 
+            },
+            { 
+                id: 7, 
+                name: "Chân Váy Ngắn Dáng Phồng Bubble Skirt Minimal", 
+                cat: "vay", 
+                catName: "Chân Váy & Quần", 
+                price: 430000, 
+                oldPrice: 0, 
+                badge: "Hot Trend", 
+                badgeType: "hot", 
+                colors: ["#1C1C1C", "#F8F6F2"], 
+                img: "https://images.unsplash.com/photo-1577900232427-18219b9166a0?auto=format&fit=crop&w=700&q=80", 
+                desc: "Thiết kế chân váy phồng (Balloon/Bubble) trẻ trung chuẩn vibe Balletcore, có quần bảo hộ lụa bên trong." 
+            },
+            { 
+                id: 8, 
+                name: "Set Áo Croptop Lệch Vai & Chân Váy Midi Xẻ Tà", 
+                cat: "set", 
+                catName: "Set Trang Phục", 
+                price: 685000, 
+                oldPrice: 820000, 
+                badge: "-16%", 
+                badgeType: "sale", 
+                colors: ["#E5DDD3", "#181818"], 
+                img: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=700&q=80", 
+                desc: "Set đồ 2 mảnh tối giản đường cắt sắc nét, khoe khéo xương quai xanh và tôn chiều cao tối đa." 
+            },
+            { 
+                id: 9, 
+                name: "Đầm Yếm Cổ Đổ Lụa Satin Hở Lưng Quyến Rũ", 
+                cat: "dam", 
+                catName: "Đầm Thiết Kế", 
+                price: 690000, 
+                oldPrice: 0, 
+                badge: "Best Seller", 
+                badgeType: "hot", 
+                colors: ["#B8192C", "#EADBC8"], 
+                img: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=700&q=80", 
+                desc: "Cổ đổ Cowl Neck mềm mại kết hợp dây đan lưng tinh tế, chất lụa satin ánh ngọc trai sang trọng." 
+            },
+            { 
+                id: 10, 
+                name: "Quần Suông Palazzo Cạp Gập Bất Đối Xứng", 
+                cat: "vay", 
+                catName: "Chân Váy & Quần", 
+                price: 485000, 
+                oldPrice: 560000, 
+                badge: "New '26", 
+                badgeType: "new", 
+                colors: ["#121212", "#D9CFC1"], 
+                img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=80", 
+                desc: "Điểm nhấn cạp gập thời thượng thay thế quần tây truyền thống, ống suông rủ tạo hiệu ứng chân dài miên man." 
+            },
+            { 
+                id: 11, 
+                name: "Áo Kiểu Cổ Yếm Buộc Nơ Lưng Chất Linen Tơ", 
+                cat: "ao", 
+                catName: "Áo Kiểu", 
+                price: 385000, 
+                oldPrice: 460000, 
+                badge: "-16%", 
+                badgeType: "sale", 
+                colors: ["#FAF7F2", "#D4A373"], 
+                img: "https://images.unsplash.com/photo-1551163943-3f6a855d1153?auto=format&fit=crop&w=700&q=80", 
+                desc: "Chất linen tơ thoáng nhẹ chuẩn vibe Resort & Café cuối tuần, chi tiết nơ mảnh sau lưng chuẩn trend Coquette." 
+            },
+            { 
+                id: 12, 
+                name: "Đầm Ngắn Cúp Ngực Phối Tùng Xòe Taffeta", 
+                cat: "dam", 
+                catName: "Đầm Thiết Kế", 
+                price: 790000, 
+                oldPrice: 950000, 
+                badge: "Limited", 
+                badgeType: "new", 
+                colors: ["#121212", "#B8192C"], 
+                img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=700&q=80", 
+                desc: "Thiết kế đầm tiệc mini dáng xòe bồng bềnh hiện đại, có sẵn mút ngực định hình tôn vòng 1 đầy đặn." 
+            }
         ];
 
         let currentCat = 'all';
@@ -219,7 +315,7 @@
             updateBadge();
         }
         function updateBadge() {
-            const total = getCart().reduce((sum, item) => sum + item.qty, 0);
+            const total = getCart().reduce((sum, item) => sum + item.qty, 0);    
             document.getElementById('cartBadge').textContent = total;
         }
 
