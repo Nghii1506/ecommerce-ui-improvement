@@ -4,8 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên Hệ & Đổi Trả — RECHIC Fashion Studio</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50%' y='62%' dominant-baseline='middle' text-anchor='middle' font-family='Alex Brush, cursive, Georgia, serif' font-size='90' fill='%23B8192C'>R</text></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link id="favicon" rel="icon" type="image/png">
+<script>
+  document.fonts.load('56px "Alex Brush"').then(() => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    ctx.font = '56px "Alex Brush"';
+    ctx.fillStyle = '#B8192C';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('R', 32, 35);
+    document.getElementById('favicon').href = canvas.toDataURL('image/png');
+  });
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
