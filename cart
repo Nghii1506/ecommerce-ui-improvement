@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng — RECHIC Fashion Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #B8192C;
+            --primary-dark: #121212;
+            --bg-body: #FFFFFF;
+            --bg-secondary: #F9F8F6;
+            --border-color: #E8E5E0;
+            --text-main: #1C1C1C;
+            --text-muted: #6E6A66;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-logo: 'Alex Brush', cursive;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); background: var(--bg-body); color: var(--text-main); line-height: 1.5; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .header { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); z-index: 100; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+        .brand-logo { font-family: var(--font-logo); font-size: 40px; color: var(--primary-red); text-decoration: none; }
+        .main-nav ul { display: flex; list-style: none; gap: 32px; }
+        .main-nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; }
+        .main-nav a:hover, .main-nav a.active { color: var(--primary-red); font-weight: 600; }
+
+        .cart-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; padding: 48px 0 80px; }
+        .section-title { font-size: 22px; font-weight: 600; margin-bottom: 24px; letter-spacing: 0.5px; }
+
+        /* Cart List */
+        .cart-table { border-top: 1px solid var(--border-color); }
+        .cart-row { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--border-color); align-items: center; }
+        .cart-row img { width: 84px; height: 112px; object-fit: cover; border-radius: 4px; background: var(--bg-secondary); }
+        .item-details { flex: 1; }
+        .item-details h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .item-size { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+        .item-price { font-size: 14px; font-weight: 700; color: var(--primary-red); }
+
+        .qty-control { display: inline-flex; align-items: center; border: 1px solid var(--border-color); border-radius: 4px; }
+        .qty-btn { width: 30px; height: 30px; border: none; background: none; cursor: pointer; font-size: 15px; }
+        .qty-val { padding: 0 12px; font-size: 13px; font-weight: 600; }
+        .btn-remove { background: none; border: none; color: #999; font-size: 12px; text-decoration: underline; cursor: pointer; margin-left: 14px; }
+        .btn-remove:hover { color: var(--primary-red); }
+
+        /* Checkout Box */
+        .checkout-card { background: var(--bg-secondary); padding: 28px; border-radius: 8px; border: 1px solid var(--border-color); height: fit-content; }
+        .voucher-box { display: flex; gap: 8px; margin-bottom: 20px; }
+        .voucher-box input { flex: 1; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px; background: #fff; }
+        .voucher-box button { padding: 0 16px; background: var(--primary-dark); color: #fff; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer; }
+
+        .sum-line { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; }
+        .sum-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; padding-top: 16px; margin-top: 16px; border-top: 1px dashed #ccc; }
+
+        .shipping-form { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 13px; background: #fff; }
+
+        .btn-checkout { width: 100%; padding: 14px; background: var(--primary-red); color: #fff; border: none; border-radius: 4px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; margin-top: 12px; transition: 0.2s; }
+        .btn-checkout:hover { background: #961222; }
+
+        .empty-state { text-align: center; padding: 60px 20px; }
+        .btn-back { display: inline-block; margin-top: 16px; padding: 11px 24px; background: var(--primary-dark); color: #fff; text-decoration: none; border-radius: 4px; font-size: 13px; font-weight: 600; }
+
+        .footer { background: var(--primary-dark); color: #fff; padding: 36px 0; text-align: center; font-size: 13px; }
+        @media (max-width: 820px) { .cart-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo">Rechic</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="cart.html" class="active">Giỏ hàng</a></li>
+                </ul>
+            </nav>
+            <a href="products.html" style="font-size: 13px; color: var(--primary-red); text-decoration: none; font-weight: 600;">&larr; Tiếp tục mua sắm</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="cart-layout" id="cartContainer"></div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 RECHIC Fashion Studio — Bài tập Cá nhân UEH</p>
+        </div>
+    </footer>
+
+    <script>
+        let discount = 0;
+
+        function getCart() { return JSON.parse(localStorage.getItem('rechic_cart') || '[]'); }
+        function saveCart(cart) {
+            localStorage.setItem('rechic_cart', JSON.stringify(cart));
+            renderCartPage();
+        }
+
+        function changeQty(key, delta) {
+            const cart = getCart();
+            const item = cart.find(i => i.key === key);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                const idx = cart.findIndex(i => i.key === key);
+                cart.splice(idx, 1);
+            }
+            saveCart(cart);
+        }
+
+        function removeItem(key) {
+            const cart = getCart().filter(i => i.key !== key);
+            saveCart(cart);
+        }
+
+        function applyVoucher() {
+            const code = document.getElementById('voucherCode').value.trim().toUpperCase();
+            if (code === 'RECHIC50') {
+                discount = 50000;
+                alert('Áp dụng mã RECHIC50 giảm 50.000đ thành công!');
+            } else if (code === 'UEH100') {
+                discount = 100000;
+                alert('Áp dụng mã sinh viên UEH100 giảm 100.000đ thành công!');
+            } else {
+                discount = 0;
+                alert('Mã giảm giá không hợp lệ. Thử nhập: RECHIC50');
+            }
+            renderCartPage();
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            const name = document.getElementById('cusName').value;
+            alert(`Cảm ơn ${name}! Đơn hàng RECHIC của bạn đã được ghi nhận và sẽ giao trong 2-3 ngày tới.`);
+            localStorage.removeItem('rechic_cart');
+            discount = 0;
+            renderCartPage();
+        }
+
+        function renderCartPage() {
+            const cart = getCart();
+            const container = document.getElementById('cartContainer');
+
+            if (cart.length === 0) {
+                container.style.display = 'block';
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <h2>Giỏ hàng của bạn đang trống</h2>
+                        <p style="color: var(--text-muted); margin-top: 8px;">Hãy khám phá các thiết kế mới nhất trong Lookbook Season '26 nhé!</p>
+                        <a href="products.html" class="btn-back">Khám phá sản phẩm ngay</a>
+                    </div>
+                `;
+                return;
+            }
+
+            container.style.display = 'grid';
+            const subTotal = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+            const finalTotal = Math.max(0, subTotal - discount);
+
+            container.innerHTML = `
+                <div>
+                    <h2 class="section-title">Giỏ Hàng (${cart.reduce((s, i) => s + i.qty, 0)} sản phẩm)</h2>
+                    <div class="cart-table">
+                        ${cart.map(item => `
+                            <div class="cart-row">
+                                <img src="${item.img}" alt="${item.name}">
+                                <div class="item-details">
+                                    <h3>${item.name}</h3>
+                                    <div class="item-size">Kích cỡ: <strong>${item.size}</strong></div>
+                                    <div class="item-price">${item.price.toLocaleString('vi-VN')}đ</div>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div class="qty-control">
+                                        <button class="qty-btn" onclick="changeQty('${item.key}', -1)">−</button>
+                                        <span class="qty-val">${item.qty}</span>
+                                        <button class="qty-btn" onclick="changeQty('${item.key}', 1)">+</button>
+                                    </div>
+                                    <div style="margin-top: 8px;">
+                                        <button class="btn-remove" onclick="removeItem('${item.key}')">Xóa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div class="checkout-card">
+                    <h3 style="font-size: 16px; margin-bottom: 16px;">Tóm Tắt Đơn Hàng</h3>
+                    <div class="voucher-box">
+                        <input type="text" id="voucherCode" placeholder="Nhập mã (VD: RECHIC50)">
+                        <button type="button" onclick="applyVoucher()">Áp dụng</button>
+                    </div>
+                    <div class="sum-line">
+                        <span>Tạm tính:</span>
+                        <span>${subTotal.toLocaleString('vi-VN')}đ</span>
+                    </div>
+                    <div class="sum-line" style="color: var(--primary-red);">
+                        <span>Ưu đãi Voucher:</span>
+                        <span>-${discount.toLocaleString('vi-VN')}đ</span>
+                    </div>
+                    <div class="sum-line">
+                        <span>Phí vận chuyển:</span>
+                        <span style="color: #2E7D32; font-weight: 600;">Miễn phí</span>
+                    </div>
+                    <div class="sum-total">
+                        <span>Tổng thanh toán:</span>
+                        <span style="color: var(--primary-red);">${finalTotal.toLocaleString('vi-VN')}đ</span>
+                    </div>
+
+                    <form class="shipping-form" onsubmit="submitOrder(event)">
+                        <h4 style="font-size: 14px; margin-bottom: 12px;">Thông Tin Nhận Hàng</h4>
+                        <div class="form-group">
+                            <label>Họ và tên người nhận *</label>
+                            <input type="text" id="cusName" required placeholder="Nguyễn Thị Bảo Nghi">
+                        </div>
+                        <div class="form-group">
+                            <label>Số điện thoại *</label>
+                            <input type="tel" required placeholder="0901 234 567">
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ giao hàng *</label>
+                            <input type="text" required placeholder="Quận 1, TP. Hồ Chí Minh">
+                        </div>
+                        <div class="form-group">
+                            <label>Phương thức thanh toán</label>
+                            <select>
+                                <option>Thanh toán khi nhận hàng (COD)</option>
+                                <option>Chuyển khoản ngân hàng / QR Pay</option>
+                                <option>Ví điện tử MoMo / Apple Pay</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-checkout">Hoàn Tất Đặt Hàng</button>
+                    </form>
+                </div>
+            `;
+        }
+
+        renderCartPage();
+    </script>
+</body>
+</html>
