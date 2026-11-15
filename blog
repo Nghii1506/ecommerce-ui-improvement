@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal & Lookbook — RECHIC Fashion Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #B8192C;
+            --primary-dark: #121212;
+            --bg-body: #FFFFFF;
+            --bg-secondary: #F9F8F6;
+            --border-color: #E8E5E0;
+            --text-main: #1C1C1C;
+            --text-muted: #6E6A66;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --font-logo: 'Alex Brush', cursive;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: var(--font-main); background: var(--bg-body); color: var(--text-main); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .header { position: sticky; top: 0; background: rgba(255,255,255,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); z-index: 100; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; height: 76px; }
+        .brand-logo { font-family: var(--font-logo); font-size: 40px; color: var(--primary-red); text-decoration: none; }
+        .main-nav ul { display: flex; list-style: none; gap: 32px; }
+        .main-nav a { text-decoration: none; color: var(--text-main); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: 1.2px; }
+        .main-nav a:hover, .main-nav a.active { color: var(--primary-red); font-weight: 600; }
+        .cart-link { text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; text-transform: uppercase; }
+        .cart-badge { background: var(--primary-red); color: #fff; border-radius: 50%; width: 22px; height: 22px; font-size: 11px; display: flex; align-items: center; justify-content: center; }
+
+        /* EDITORIAL HERO */
+        .journal-header { padding: 48px 0 32px; text-align: center; }
+        .journal-header span { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--primary-red); font-weight: 600; }
+        .journal-header h1 { font-size: 34px; font-weight: 600; margin: 8px 0; letter-spacing: 1px; }
+
+        .featured-post { display: grid; grid-template-columns: 1.2fr 1fr; background: var(--bg-secondary); border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 48px; }
+        .featured-post img { width: 100%; height: 100%; max-height: 420px; object-fit: cover; }
+        .featured-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-red); font-weight: 700; margin-bottom: 10px; display: inline-block; }
+        .featured-body h2 { font-size: 24px; line-height: 1.35; margin-bottom: 14px; }
+        .featured-body p { font-size: 14px; color: var(--text-muted); margin-bottom: 22px; }
+        .btn-read { align-self: flex-start; padding: 11px 24px; background: var(--primary-dark); color: #fff; border: none; border-radius: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; }
+        .btn-read:hover { background: var(--primary-red); }
+
+        /* TOPIC FILTER */
+        .topic-bar { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+        .topic-btn { padding: 7px 18px; border: 1px solid var(--border-color); background: #fff; border-radius: 20px; font-size: 13px; cursor: pointer; transition: 0.2s; }
+        .topic-btn.active, .topic-btn:hover { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); }
+
+        /* BLOG GRID */
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 32px; margin-bottom: 72px; }
+        .article-card { border-radius: 6px; overflow: hidden; border: 1px solid var(--border-color); background: #fff; transition: 0.3s; cursor: pointer; display: flex; flex-direction: column; }
+        .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 24px rgba(0,0,0,0.06); }
+        .article-card img { width: 100%; height: 230px; object-fit: cover; }
+        .article-content { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .article-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+        .article-title { font-size: 17px; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+        .article-excerpt { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+        .read-link { font-size: 13px; font-weight: 600; color: var(--primary-red); }
+
+        /* ARTICLE READER MODAL */
+        .reader-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 300; justify-content: center; align-items: center; padding: 20px; }
+        .reader-modal.active { display: flex; }
+        .reader-box { background: #fff; max-width: 740px; width: 100%; max-height: 88vh; overflow-y: auto; border-radius: 8px; padding: 36px; position: relative; }
+        .reader-close { position: sticky; top: 0; float: right; font-size: 28px; background: #fff; border: none; cursor: pointer; line-height: 1; }
+        .reader-box img { width: 100%; height: 320px; object-fit: cover; border-radius: 6px; margin: 18px 0; }
+        .reader-text p { margin-bottom: 14px; font-size: 15px; color: #333; line-height: 1.75; }
+
+        .footer { background: var(--primary-dark); color: #fff; padding: 36px 0; text-align: center; font-size: 13px; }
+        @media (max-width: 768px) { .featured-post { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="brand-logo">Rechic</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li><a href="products.html">Sản phẩm</a></li>
+                    <li><a href="blog.html" class="active">Blog</a></li>
+                    <li><a href="cart.html">Giỏ hàng</a></li>
+                </ul>
+            </nav>
+            <a href="cart.html" class="cart-link">
+                <span>Giỏ hàng</span>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="journal-header">
+            <span>RECHIC Journal</span>
+            <h1>Tạp Chí Phong Cách & Phối Đồ</h1>
+        </div>
+
+        <!-- Featured Story -->
+        <article class="featured-post">
+            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=80" alt="Lookbook 2026">
+            <div class="featured-body">
+                <span class="tag">Cover Story • Season '26</span>
+                <h2>Quiet Luxury & Nghệ Thuật Cắt Rập Origami Trong Thiết Kế Đương Đại</h2>
+                <p>Khám phá câu chuyện đằng sau bộ sưu tập mới nhất của RECHIC: cách những đường gấp nếp kiến trúc biến tấu thành phom váy tôn trọn đường nét Á Đông.</p>
+                <button class="btn-read" onclick="openArticle(0)">Đọc bài viết</button>
+            </div>
+        </article>
+
+        <div class="topic-bar">
+            <button class="topic-btn active" onclick="filterPosts('all', this)">Tất cả bài viết</button>
+            <button class="topic-btn" onclick="filterPosts('styling', this)">Bí quyết phối đồ</button>
+            <button class="topic-btn" onclick="filterPosts('trend', this)">Xu hướng '26</button>
+            <button class="topic-btn" onclick="filterPosts('care', this)">Bảo quản chất liệu</button>
+        </div>
+
+        <section class="blog-grid" id="blogGrid"></section>
+    </main>
+
+    <!-- Reader Modal -->
+    <div class="reader-modal" id="readerModal">
+        <div class="reader-box">
+            <button class="reader-close" onclick="closeReader()">&times;</button>
+            <span class="tag" id="rTag"></span>
+            <h2 id="rTitle" style="font-size: 24px; line-height: 1.35;"></h2>
+            <p id="rMeta" class="article-meta" style="margin-top: 6px;"></p>
+            <img id="rImg" src="" alt="">
+            <div class="reader-text" id="rBody"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 RECHIC Fashion Studio — Bài tập Cá nhân UEH</p>
+        </div>
+    </footer>
+
+    <script>
+        const ARTICLES = [
+            {
+                topic: 'trend',
+                tag: 'Xu hướng \'26',
+                title: 'Quiet Luxury & Nghệ Thuật Cắt Rập Origami Trong Thiết Kế Đương Đại',
+                date: '12 Tháng 11, 2026 • 4 phút đọc',
+                img: 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Không cần logo phô trương, sự sang trọng đến từ đường cắt chuẩn xác và chất liệu đứng phom...',
+                content: `<p>Trong năm 2026, thời trang tối giản (Minimalism) tiếp tục bước sang một chương mới mang đậm tính cấu trúc. Thay vì những chi tiết đính kết cầu kỳ, đội ngũ thiết kế RECHIC tập trung vào kỹ thuật dựng rập 3D lấy cảm hứng từ nghệ thuật gấp giấy Origami.</p><p>Điểm đắt giá của kỹ thuật này nằm ở phần cổ áo và chiết eo: các nếp gấp được tính toán theo tỷ lệ vàng giúp tạo hiệu ứng thị giác thu gọn vòng eo và tôn lên xương quai xanh thanh mảnh của người mặc.</p><p>Bạn có thể kết hợp Đầm Cổ Origami cùng một đôi giày slingback mũi nhọn màu kem để hoàn thiện diện mạo thanh lịch cho cả ngày làm việc lẫn buổi hẹn tối.</p>`
+            },
+            {
+                topic: 'styling',
+                tag: 'Bí quyết phối đồ',
+                title: '5 Công Thức Phối Set Gile Cho Nàng Công Sở Hiện Đại',
+                date: '05 Tháng 11, 2026 • 3 phút đọc',
+                img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Biến hóa linh hoạt chỉ với một chiếc áo gile thiết kế từ môi trường văn phòng đến dạo phố cuối tuần...',
+                content: `<p>Áo gile (waistcoat) đã vượt ra khỏi khuôn khổ trang phục menswear để trở thành biểu tượng mới của sự nữ tính đầy quyền lực.</p><p><strong>1. Phối đồng bộ (Monochrome):</strong> Diện trọn bộ Gile Peplum cùng chân váy hoặc quần shorts đồng chất liệu giúp bạn tiết kiệm thời gian mà vẫn cực kỳ chỉn chu.</p><p><strong>2. Layer cùng sơ mi tay bồng:</strong> Khoác ngoài áo gile cổ V bên ngoài sơ mi trắng tạo chiều sâu trang phục chuẩn phong cách Hàn Quốc.</p>`
+            },
+            {
+                topic: 'care',
+                tag: 'Bảo quản chất liệu',
+                title: 'Cách Giữ Lụa Satin Và Vải Tweed Luôn Bền Đẹp Như Mới',
+                date: '28 Tháng 10, 2026 • 5 phút đọc',
+                img: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Những lưu ý nhỏ khi giặt và ủi hơi nước giúp bảo vệ cấu trúc sợi vải cao cấp suốt nhiều năm...',
+                content: `<p>Các thiết kế sử dụng chất liệu lụa satin, organza hay vải tweed dệt sợi kim tuyến đòi hỏi sự nâng niu đúng cách để giữ được độ bóng mượt và phom dáng ban đầu.</p><p>Hãy ưu tiên giặt tay nhẹ nhàng với nước lạnh và nước giặt dịu nhẹ không chất tẩy. Tuyệt đối không vắt xoắn mạnh tay; thay vào đó hãy dùng khăn bông thấm bớt nước và phơi trên móc bọc nhung ở nơi thoáng gió, tránh ánh nắng trực tiếp.</p>`
+            },
+            {
+                topic: 'styling',
+                tag: 'Bí quyết phối đồ',
+                title: 'Bảng Màu Trung Tính: Nghệ Thuật Phối Đen, Cream & Đỏ Rượu',
+                date: '19 Tháng 10, 2026 • 3 phút đọc',
+                img: 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=800&q=80',
+                excerpt: 'Tận dụng gam màu đỏ burgundy đặc trưng của RECHIC làm điểm nhấn đắt giá cho tổng thể trang phục...',
+                content: `<p>Sự kết hợp giữa sắc kem (Cream), đen tuyền và đỏ rượu vang (Burgundy) luôn mang lại cảm giác sang trọng vượt thời gian.</p><p>Nếu bạn diện một chiếc đầm lụa màu kem tối giản, chỉ cần nhấn nhá bằng một chiếc túi xách hoặc son môi sắc đỏ rượu đặc trưng của RECHIC là đủ để thu hút mọi ánh nhìn.</p>`
+            }
+        ];
+
+        function updateBadge() {
+            const cart = JSON.parse(localStorage.getItem('rechic_cart') || '[]');
+            document.getElementById('cartBadge').textContent = cart.reduce((s, i) => s + i.qty, 0);
+        }
+
+        function renderBlogs(topic = 'all') {
+            const list = topic === 'all' ? ARTICLES : ARTICLES.filter(a => a.topic === topic);
+            document.getElementById('blogGrid').innerHTML = list.map((a, idx) => {
+                const realIndex = ARTICLES.indexOf(a);
+                return `
+                    <article class="article-card" onclick="openArticle(${realIndex})">
+                        <img src="${a.img}" alt="${a.title}">
+                        <div class="article-content">
+                            <div>
+                                <span class="tag">${a.tag}</span>
+                                <h3 class="article-title">${a.title}</h3>
+                                <p class="article-excerpt">${a.excerpt}</p>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span class="article-meta" style="margin:0;">${a.date.split('•')[0]}</span>
+                                <span class="read-link">Đọc tiếp &rarr;</span>
+                            </div>
+                        </div>
+                    </article>
+                `;
+            }).join('');
+        }
+
+        function filterPosts(topic, btn) {
+            document.querySelectorAll('.topic-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderBlogs(topic);
+        }
+
+        function openArticle(index) {
+            const a = ARTICLES[index];
+            document.getElementById('rTag').textContent = a.tag;
+            document.getElementById('rTitle').textContent = a.title;
+            document.getElementById('rMeta').textContent = a.date;
+            document.getElementById('rImg').src = a.img;
+            document.getElementById('rBody').innerHTML = a.content;
+            document.getElementById('readerModal').classList.add('active');
+        }
+
+        function closeReader() { document.getElementById('readerModal').classList.remove('active'); }
+
+        updateBadge();
+        renderBlogs();
+    </script>
+</body>
+</html>
